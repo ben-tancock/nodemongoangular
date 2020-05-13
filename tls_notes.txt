@@ -1,0 +1,15 @@
+IMPLEMENTING TLS SERVERS AND CLIENTS:
+- Transport Layer Security/Secure Socket Layer (TLS/SSL) is a cryptographic protocol designed to provide secure communications on the internet
+- they use X.509 certificates along with session keys to verify whether the socket server you are communicating with is the one that you want to communicate with.
+- TLS uses long-term public and secret keys to exchange a short-term session key so that data can be encrypted between client and server
+- TLS also provides authentication so you can ensure that the webserver you are connecting to is the one you actually think it is, thus preventing MITM attacks
+
+To generate a private key, execute the following SSL command:
+openssl genrsa -out server.pem 2048
+
+Next, use the following command to create a certificate signing request file:
+openssl req -new -key server.pem -out server.certificates
+
+Then, to create a self-signed certificate that you can use for your own purpose or testing, use the following command:
+openssl x509 -req -days 365 -in server.csr -signkey server.pem -out server.create
+

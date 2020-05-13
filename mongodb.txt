@@ -1,0 +1,50 @@
+UNDERSTANDING MONGODB:
+- before you being implementing a MongoDB database, you need to understand the nature of the data being stored
+- what are the basic objects that my application will be storing?
+- what is the relationship between the different object types: one-to-one, one-to-many, or many-to-many?
+- how often will new objects be added to the database?
+- how often will new objects be deleted from the database?
+- how often will objects be changed?
+- how often will objects be accessed?
+- how will objects be accessed: by ID, property values, comparisons, etc.?
+- how will groups of object types be accessed: by common ID, common property value, etc.?
+
+DATA NORMALIZATION:
+- data normalization is the process of organizing documents and collections to minimize redundancy and dependency
+- e.g. each user has a name, phone, and favouritestore properties. it would make sense to normalize favouritestore, because
+    multiple users may have the exact same favourite store. thus, it wouldn't make sense to create multiple different favouritestore objects that are exactly the same for each user
+- instead, the FavouriteStore object should include an _id object property that can be referenced from the documents in the user's favourite store.
+- the application can then use the reference id favouritestore to link data from the users collection to FavouriteStore documents in the favouritestore collection
+
+DATA DENORMALIZATION:
+- the opposite of normalization, when it makes sense to store things directly in the user object, things that don't change very often form user to user
+
+GETTING STARTED WITH MONGODB AND NODE.JS: ---------------------
+
+Adding the MongoDB Driver to Node.js:
+- the first step in implementing MongoDB access from your Node.js applications is to add the MongoDB driver to your application project
+- Thanks to the node.js modular framework, adding the MongoDB Node.js driver to your project is a simple npm command
+- From your project root directory, execute the following command using a console prompt:
+    npm install mongodb
+
+A node_modules directory is created if it is not already there, and the mongodb driver module is installed under it. Once that is done, your Node.js application files can use
+the require('mongodb') command to access the mongodb module functionality
+
+Accessing MongoDB is best done through the MongoClient class in the mongodb module. 
+This class provides two main methods to create connections to MongoDB. One is to create an instance of the MongoClient object
+and then use that object to create and manage the MongoDB connection. The other method uses a connection string to connect.
+
+UNDERSTANDING THE WRITE CONCERN:
+- before connecting to and updating data on a MongoDB server, you need to decide what level of write concern you want to implement on your connection
+- write concern describes the guarantee that the MongoDB connection provides when reporting on the success of a write operation. The strength determines the level of guaruntee.
+- A stronger write concern tells MongoDB to wait until the write has successfully been written to disk completely before responding back, 
+    whereas a weaker write concern may only wait until MDB has successfully scheduled the change to be written before responding back.
+- The downside of stronger write concern is speed.
+- Write concern can be set from -1 (ignores network errors), 0 (no write acknowledgement required), 1 (write acknowledgement is requested), 
+    2 (write acknowledgement is request accross primary and one secondary server in the replica set), or majority (write ack requested across a majority of servers in the replica set)
+- if a write error is detected, then an error is returned in the callback function of the request
+
+CONNECTING TO MONGODB FROM NODE.JS USING THE MongoClient OBJECT:
+- using a MongoClient object to connect to MongoDB involves creating an instance of the client, opening a connection to the database, authenticating to the database if necessary,
+    and handling logout and closure as needed.
+

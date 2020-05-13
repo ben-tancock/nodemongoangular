@@ -1,0 +1,16 @@
+USING ADDITIONAL NODE.JS MODULES:
+
+The OS module:
+- the os module provides a useful set of functions that allow you to get information from the operating system
+
+The util module:
+- a catch-all module that provides functions for formatting strings, converting objects to strings, checking
+    object types, performing synchronous writes to output streams, and some object inheritance enhancements
+
+The dns module:
+- if your app needs to resolve dns domain names, look up domains, or do reverse lookups, then the dns module is helpful.
+
+The crypto module:
+- creates cryptographic information, in other words, creates secure communication using secret code.
+- can encrypt and decrypt data streams
+
