@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/words');
+mongoose.connect('mongodb://localhost/dictionary');
 var Schema = mongoose.Schema;
 var wordSchema = new Schema({
     word: {type: String, index: 1, required: true},

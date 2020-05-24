@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/words');
+mongoose.connect('mongodb://localhost/dictionary');
 
 /*mongoose.connection.on('open', function(){
   
@@ -38,6 +38,14 @@ query.where('value').lt(5); // where value less than 5
 query.sort('-value');
 query.select('name title value');
 query.exec(function(err, results){});
+
+// Finding documents in Mongoose: all three of the following queries are identical, just built in different ways
+//var query1 = mongoose.model('example').find({name:'test'}, {limit:10, skip:5, fields:{name:1, value:1}});
+//var query2 = mongoose.model('example').find().where('name', 'test').limit(10).skip(5).select({name:1, value:1});
+
+// this part I'm not so sure about...
+//var query3 = mongoose.model('example').find().query3.where('name', 'test').query3.limit(10).skip(5);
+//query3.select({name:1, value:1});
 
 console.log("Required paths: ");
 console.log(wordSchema.requiredPaths());
