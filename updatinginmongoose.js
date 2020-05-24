@@ -9,16 +9,16 @@ var wordSchema = require('./words_schema.js').wordSchema;
 var Words = mongoose.model('Words', wordSchema, 'wordCollection');
 
 mongoose.connection.once('open', function(){
-    Words.find({word:/grati*/}, function(err, docs){
+Words.find({word:/gra/}, function(err, docs){
         console.log("Before Update: ");
         for (var i in docs){
             console.log(docs[i].word + " : " + docs[i].size);
         }
         var query = Words.update({}, {$set: {size:0}});
         query.setOptions({multi:true});
-        query.where('word').regex(/grati.*/);
+        query.where('word').regex(/gra/);
         query.exec(function(err, results){
-            Words.find({word:/grati.*/}, function(err, docs){
+            Words.find({word:/gra/}, function(err, docs){
                 console.log("\nAfter Update: ");
                 for(var i in docs){
                     console.log(docs[i].word + " : " + docs[i].size);

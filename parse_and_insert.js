@@ -1,7 +1,7 @@
 var mongodb = require('mongodb');
 var MongoClient = mongodb.MongoClient;
 var fs = require('fs');
-var randomWords = require('random-words');
+var randomWords = require('random-words'); // random words is a node package that generates random words as sample text.
 
 /* the objective of this code is to create a lot of 'word' objects (see below) and insert them into a database
     document structure:
