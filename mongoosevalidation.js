@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/dictionary');
 var wordSchema = require('./words_schema.js').wordSchema;
-var Words = mongoose.model('Words', wordSchema);
+var Words = mongoose.model('Words', wordSchema, 'wordCollection');
 
 Words.schema.path('word').validate(function(value){
     return value.length < 0;
