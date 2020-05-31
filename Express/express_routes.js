@@ -32,4 +32,12 @@ app.get('/user/:userid', function(req, res){
     res.send(response);
 });
 
+/*  The following code is specifying a callback function
+    that is exectuted if the defined parameter (userid) is found in a URL.
+    When parsing the URL, if Express finds a parameter that has a callback registered,
+    it calls the parameters callback function before calling the route handler. */
+app.param('userid', function(req, res, next, value){
+    console.log("\nRequest received with user id: " + value);
+    next();
+});
 
